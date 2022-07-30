@@ -3,6 +3,7 @@
 *{
   padding: 0;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .container{
@@ -16,7 +17,7 @@
 
 /* header session */
 .header{
-  height: 50px;
+  min-height: 50px;
   padding: 15px 30px;
   background: #101540;
   display: flex;
@@ -39,6 +40,12 @@
 .img1{
   width: 60px;
   margin-left: 90px;
+}
+
+.headerdiv3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .headerdiv3 a{
@@ -221,7 +228,7 @@
 }
 
 .footdiv2 ul li a:hover{
-  background-image: linear-gradient(to right, #388fd3 , #ff3d6b);
+  background-image: linear-gradient(to right, #388fd3 , rgb(255, 61, 107));
   -webkit-background-clip: text;
 }
 
@@ -231,6 +238,122 @@
 
 .footspan{
   font-size: 30px;
+}
+
+/* working on the overview page */
+.overview{
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card{
+  min-height: 200px;
+  width: 320px;
+  box-shadow: 0 0 50px 2px rgba(1, 1, 1, 0.1);
+  margin: 20px;
+}
+
+.cardimg{
+  height: 200px;
+  background-image: url(../img/tours/tour-1-1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  
+}
+
+.card1{
+  height: 200px;
+  background: rgba(16, 21, 64, 0.5);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  padding: inherit;
+}
+
+.divdiv{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card2{
+  min-height: 100px;
+  width: 260px;
+  background: #fff;
+  padding: 30px;
+}
+
+.card3{
+  min-height: 30px;
+  width: 260px;
+  background: #f7f7f7;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p4{
+  width: 200px;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: 300;
+  color: white;
+  margin: 70px 0 0 100px;
+}
+
+.p5{
+  font-size: 12px;
+}
+
+.p6{
+  font-size: 13px;
+  padding-top: 20px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.ul{
+  margin-top: 20px;
+  font-size: 13px;
+  list-style-type: none;
+  font-style: italic;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.li{
+  width: 40%;
+  padding: 10px 0;
+}
+
+.card3a{
+  width: 50%;
+  font-size: 13px;
+}
+
+.ul3{
+  list-style-type: none;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.li2{
+  padding-top: 10px;
+}
+
+.photo{
+  width: 50px;
+  border-radius: 50px;
 }
 
 /* Media query begins here */
