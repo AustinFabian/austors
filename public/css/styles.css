@@ -356,6 +356,11 @@
   border-radius: 50px;
 }
 
+.fa{
+  width: 25px;
+  color: #388fd3;
+}
+
 /* Media query begins here */
 
 @media screen and (max-width: 700px){
