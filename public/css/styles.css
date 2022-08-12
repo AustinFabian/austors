@@ -146,12 +146,18 @@
   border-radius: 5px;
   width: 400px;
   background: #f2f2f2;
-  border: none;
+  border: 2px solid transparent;
   outline: none;
   margin-bottom: 30px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 15px;
+  transition: .2s all ease-in-out;
+  resize: none;
+}
+
+.input:hover{
+  border-color: #388fd3;
 }
 
 .p1{
@@ -201,7 +207,7 @@
   right: 0;
   left: 0;
   height: 50px;
-  padding: 60px 30px 0 30px;
+  padding:0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -577,6 +583,46 @@
   font-weight: 300;
 }
 
+.reviewForm{
+  display: none;
+}
+
+.p32{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #101540;
+}
+
+.reviewInput{
+  width: 800px;
+  padding: 10px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 50px 2px rgba(1, 1, 1, 0.1);
+  outline: none;
+  text-decoration: none;
+  border-radius: 50px 0 0 50px;
+  transition: all .2s ease-in-out;
+}
+
+.reviewInput:hover{
+  border-color: white;
+}
+
+.fa-paper-plane{
+  padding: 10px 10px 11px 10px;
+  border: 2px solid transparent;
+  border-radius: 0 50px 50px 0; 
+  color: #388fd3; 
+  background: white;
+  transition: all .2s ease-in-out;
+}
+
+.fa-paper-plane:hover{
+  border-color: #388fd3;
+}
+
 /* section detail4 starts here */
 
 .detail4{
@@ -755,8 +801,79 @@
   margin: 5px 0;
   text-decoration: none;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   transition: .2s all ease-in-out;
+}
+
+/* Manage tour styling starts here */
+
+.edittour{
+  padding: 10px 20px;
+}
+
+.edittour:hover{
+  padding-right: 30px;
+}
+
+.edit{
+  font-size: 15px;
+}
+
+/* create new tour styling */
+.but10{
+  padding: 20px;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 0.5px solid #101540;
+  color: #101540;
+  cursor: pointer;
+  transition: .5s all ease-in-out;
+}
+
+.but10:hover{
+  background: #101540;
+  color: #fff;
+}
+
+/* Users styling starts here */
+
+.tourist{
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.users{
+  min-height: 200px;
+  width: 280px;
+  padding: 20px;
+  background:rgb(56, 143, 211,.7);
+  box-shadow: 0 0 50px 2px rgba(1, 1, 1, 0.1);
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.usersa{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.usersb{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #101540;
+  border-radius: 10px;
 }
 
 
@@ -764,7 +881,13 @@
 
 /* Media query begins here */
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1030px){
+  .user1 a{
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1000px){
   .detail4{
     display: block;
   }
@@ -788,6 +911,10 @@
     width: 100%;
     padding: 20px;
   }
+
+  .reviewInput{
+    width: 580px;
+  }
 }
 
 @media screen and (max-width: 830px){
@@ -807,24 +934,6 @@
     align-items: center;
     justify-content: center;
   }
-}
-
-@media screen and (max-width: 700px){
-  .headerdiv1,.headerdiv3, .footdiv2{
-    display: none;
-  }
-
-  .input{
-    width: 300px;
-  }
-
-  .img1{
-    margin: 0;
-  }
-
-  .footdiv1, .headerdiv1{
-    padding-left: 0;
-  }
 
   .bar{
     display: block;
@@ -842,6 +951,7 @@
         z-index: 999;
         transition: 2s all ease;
         border-radius: 0 10px 0 0;
+        box-shadow: 0 0 50px 2px rgba(1, 1, 1, 0.5);
     }
 
     .responsive{
@@ -863,6 +973,34 @@
 
     .ul7{
       display: block;
+    }
+
+  .reviewInput{
+    width: 480px;
+  }
+
+  .headerdiv1,.headerdiv3, .footdiv2{
+    display: none;
+  }
+
+  .img1{
+    margin: 0;
+  }
+  
+}
+
+@media screen and (max-width: 700px){
+
+  .input{
+    width: 300px;
+  }
+
+  .footdiv1, .headerdiv1{
+    padding-left: 0;
+  }
+
+    .reviewInput{
+      width: 380px;
     }
 }
 
@@ -892,4 +1030,34 @@
     font-size: 45px;
     width: 300px;
   }
+
+  .reviewInput{
+    width: 300px;
+  }
+
+  .p32{
+    padding: 20px 10px;
+  }
+
+  .reviewInput{
+    width: 230px;
+  }
+
+  .responsive{
+    width: 50%;
+  }
+
+  .userslide a{
+    padding: 15px 0;
+    margin: 5px 0;
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    transition: .2s all ease-in-out;
+  }
+
+  .tourist{
+    padding: 80px 5px ;
+  }
+  
 }
