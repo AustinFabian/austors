@@ -1,0 +1,25 @@
+.hidden
+      ul.ul1
+        if user 
+          li
+            a(href='/') All tours
+          li
+            a.nav__el--logout1
+              | logout
+          li
+            a(style='display: flex; align-items:center;', href='/me')
+              span.fancy2
+                img.photo(style='border: 5px solid rgba(255, 255, 255, .7)', src=`/img/users/${user.photo}`, alt='')
+              span(style='margin-left: 5px;')= user.name.split(' ')[0]
+        else 
+          li
+            a(href='/overview') All tours
+          li
+            a(href='/signup') Signup 
+          li
+            a(style='display: flex; align-items:center;', href='/login') Login
+      ul.ul2
+        li(style='padding-right: 10px;')
+          a(href='#') About us
+        li
+          a(href='#') Contact

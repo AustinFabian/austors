@@ -1,0 +1,159 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='/css/styles.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css', rel='stylesheet')
+  script(src='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title=title 
+.container
+  // section header
+  include _header
+  .containment
+    include _hidden
+    // section tour detail1
+    .detail1(style=`background-image: url(/img/tours/${tour.imageCover});`)
+      .t1
+        p.p7(style='text-transform:uppercase;')=`${tour.name}`
+        ul.ul5
+          li
+            i.fa.fa-calendar-o(style='font-size: 22px;')
+            span=`${tour.duration} DAYS`
+          li
+            i.fa.fa-map-marker(style='font-size: 22px;')
+            span=`${tour.startLocation.description}`
+    // section tour detail2
+    .detail2
+      .t2
+        div
+          p.p8
+            | QUICK FACTS
+          ul.ul6
+            li
+              - const date = tour.startDates[0].toLocaleString('en-us', {month: 'long', year : 'numeric'})
+              i.fa.fa-calendar-o(style='font-size: 22px;')
+              |  NEXT DATE 
+              span(style='padding: 0 20px; font-weight: 300;')= date
+            li
+              i.fa.fa-line-chart(style='font-size: 22px;')
+              |  DIFFICULTY 
+              span(style='padding: 0 20px; font-weight: 300;')=tour.difficulty
+            li
+              i.fa.fa-user(style='font-size: 22px;')
+              |  PARTICIPANTS 
+              span(style='padding: 0 20px; font-weight: 300;')=`${tour.maxGroupSize} people`
+            li
+              i.fa.fa-star-o(style='font-size: 22px;')
+              |  RATING 
+              span(style='padding: 0 20px; font-weight: 300;')=`${tour.ratingsAverage} / 5`
+          p.p8
+            | YOUR TOUR GUIDES
+          ul.ul7
+            each guide in tour.guides
+              li(style='display: flex; align-items:center;')
+                img.photo2(src=`/img/users/user-62ca75bcc0b1bb2ef89f88ce-1658480698233.jpeg`, alt='')
+                | LEAD GUIDE 
+                span(style='padding: 0 20px; font-weight: 300;') Austin Fabian
+              li(style='display: flex; align-items:center;')
+                img.photo2(src=`/img/users/user-62ca75bcc0b1bb2ef89f88ce-1658480698233.jpeg`, alt='')
+                | TOUR GUIDE 
+                span(style='padding: 0 20px; font-weight: 300;') Austin Fabian
+      .t3
+        div
+          p.p8
+            span(style='text-transform: uppercase;')=`ABOUT THE ${tour.name} TOUR`
+          p.p9
+            - const paragraph = tour.description.split('\n')
+            span=paragraph[0]
+            br
+            br
+            span=paragraph[1]
+    // section detail3
+    .detail3
+      .carousel.owl-carousel
+        each img, i in tour.images
+          .card
+            .box(style=`background-image: url(/img/tours/${img});`)
+    // Section map
+    .mapb
+      #map(data-locations=`${JSON.stringify(tour.locations)}`)
+    // section reviews
+    .review
+      .carousel.owl-carousel
+        // Drop a review part
+        - if(tour.reviews.length > 0)
+            .card
+              .box.reviews
+                p.p10
+                  img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgba(56, 143, 211, .5);', src='/img/Austin FX LOGO.png', alt='')
+                  span.span9 @Austours
+                br
+                p.p11
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci architecto eos reprehenderit dolorem
+                br
+                p
+                  button#tourReview.but3
+                    | Drop a Review
+            each review in tour.reviews
+              .card
+                .box
+                  p.p10
+                    img.photo3(style='width: 50px;', src='/img/users/user-62ca75bcc0b1bb2ef89f88ce-1658480698233.jpeg', alt='')
+                    span.span9 Austin Fabian
+                  br
+                  p.p11
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci architecto eos reprehenderit dolorem qui natus sunt, et recusandae! Natus error quod sunt excepturi maxime officia cum vero. Laborum, dolores?
+        - if(tour.reviews.length === 0)
+            .card
+                .box(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
+                  p.p10(style='font-size:22px;')
+                    | DROP A REVIEW 
+                    i.fa.fa-arrow-right(style='font-size: 60px; color:#388fd3')
+            .card
+              .box.reviews
+                p.p10
+                  img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgba(56, 143, 211, .5);', src='/img/Austin FX LOGO.png', alt='')
+                  span.span9 @Austours
+                br
+                p.p11
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci architecto eos reprehenderit dolorem
+                br
+                p
+                  button#tourReview.but3
+                    | Drop a Review
+            .card
+                .box(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
+                  p.p11
+                    | No reviews on this tour Yet
+            
+            
+                    
+      form#formReview.reviewForm(action='')
+        p.p32
+          label(for='review')
+            input.reviewInput(type='text', placeholder='Drop your review here')
+            i.fa.fa-paper-plane
+    // section  detail4
+    .detail4
+      .detail4a
+        .cta__img.cta__img--logo
+          img.photo5(src=`/img/tours/${tour.images[1]}`, alt='Austours logo')
+        img.cta__img.cta__img--1.photo6(src=`/img/tours/${tour.images[0]}`, alt='')
+        img.cta__img.cta__img--2.photo6(src=`/img/tours/${tour.images[2]}`, alt='')
+      .detail4b
+        p
+        p.p8 WHAT ARE YOU WAITING FOR?
+        span= `${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`
+        p
+        p(style='margin-top: 30px;')
+          button.but3#book-tour(data-tour-id=`${tour.id}`)
+            | Book Tour Now
+    // section footer
+    include _footer
