@@ -40,6 +40,21 @@
   background: #f7f7f7;
 }
 
+.overview2{
+  height: 700px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noTour{
+  font-size: 25px;
+  background-image: linear-gradient(to right, #388fd3 , #ff3d6b);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .fancy{
   animation-name: decor;
   animation-duration: 5s;
@@ -662,8 +677,17 @@
 }
 
 .span9{
-  color: #f7f7f7;
+  color: #101540;
   font-size: 20px;
+  font-weight: 500;
+}
+
+.span11{
+  padding: 5px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0,.5);
+  color: white;
+  font-size: 10px;
   font-weight: 500;
 }
 
@@ -946,6 +970,15 @@
 
 .edit{
   font-size: 15px;
+}
+
+.delete{
+  cursor: pointer;
+  transition: .2s all ease-in-out;
+}
+
+.delete:hover{
+  color: red;
 }
 
 /* create new tour styling */

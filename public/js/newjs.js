@@ -3,7 +3,10 @@ import { login } from './login'
 import { logOut } from './login'
 import {updateSettings} from './updateSettings'
 import {updateTour} from './updateSettings'
-import {createTour} from './updateSettings'
+import {newTour} from './updateSettings'
+import {deleteEvent} from './updateSettings'
+import {deleteClient} from './updateSettings'
+import {deactivateSelf} from './updateSettings'
 import {bookTour} from './stripe'
 import {showAlert} from './alert'
 import { signup } from './signup'
@@ -16,10 +19,12 @@ const logOutBtn2 = document.querySelector('.nav__el--logout1');
 const userDataForm = document.querySelector('.form-user-data');
 const tourUpdateForm = document.querySelector('.form-tour-update');
 const createTourForm = document.querySelector('.form-create-tour');
+const deleteTour = document.getElementById('deleteTour');
+const deleteUser = document.querySelectorAll('.usersb');
+const deleteSelf = document.querySelectorAll('.removeAccount');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
-const carousel = document.querySelector('.carousel')
-
+const carousel = document.querySelector('.carousel');
 
 // DELEGATION
 
@@ -68,7 +73,15 @@ if (createTourForm) createTourForm.addEventListener('submit', function(e){
     form.append('startDates[0]',document.getElementById('start-date1').value)
 	form.append('startDates[1]',document.getElementById('start-date2').value)
 	form.append('startDates[2]',document.getElementById('start-date3').value)
+
 	form.append('startLocation.description',document.getElementById('start-location1').value)
+	form.append('startLocation.coordinates[0]',document.getElementById('start-location-co-ordinate1').value)
+	form.append('startLocation.coordinates[1]',document.getElementById('start-location-co-ordinate2').value)
+
+	form.append('locations.description',document.getElementById('location1').value)
+	form.append('locations.coordinates[0]',document.getElementById('location1-cordinate1').value)
+	form.append('locations.coordinates[1]',document.getElementById('location1-cordinate2').value)
+
 	form.append('difficulty',document.getElementById('difficulty').value)
 	form.append('maxGroupSize',document.getElementById('max-group-size').value)
 	form.append('price',document.getElementById('price').value)
@@ -79,7 +92,7 @@ if (createTourForm) createTourForm.addEventListener('submit', function(e){
 	form.append('description',document.getElementById('description').value)
 	form.append('summary',document.getElementById('summary').value)
 	
-    createTour(form)
+    newTour(form)
 })
 
 // FOR UPDATING TOUR
@@ -96,28 +109,7 @@ if (tourUpdateForm) tourUpdateForm.addEventListener('submit', function(e){
     form.append('startDates[0]',document.getElementById('start-date1').value)
 	form.append('startDates[1]',document.getElementById('start-date2').value)
 	form.append('startDates[2]',document.getElementById('start-date3').value)
-
 	form.append('startLocation.description',document.getElementById('start-location1').value)
-	form.append('startLocation.coordinates[0]',document.getElementById('start-location-co-ordinate1').value)
-	form.append('startLocation.coordinates[1]',document.getElementById('start-location-co-ordinate2').value)
-
-	form.append('locations[0].description',document.getElementById('location1').value)
-	form.append('locations[0].coordinates[0]',document.getElementById('location1-cordinate1').value)
-	form.append('locations[0].coordinates[1]',document.getElementById('location1-cordinate2').value)
-
-	form.append('locations[1].description',document.getElementById('location1').value)
-	form.append('locations[1].coordinates[0]',document.getElementById('location2-cordinate1').value)
-	form.append('locations[1].coordinates[1]',document.getElementById('location2-cordinate2').value)
-
-	form.append('locations[2].description',document.getElementById('location1').value)
-	form.append('locations[2].coordinates[0]',document.getElementById('location3-cordinate1').value)
-	form.append('locations[2].coordinates[1]',document.getElementById('location3-cordinate2').value)
-
-	form.append('locations[3].description',document.getElementById('location1').value)
-	form.append('locations[3].coordinates[0]',document.getElementById('location4-cordinate1').value)
-	form.append('locations[3].coordinates[1]',document.getElementById('location4-cordinate2').value)
-
-
 	form.append('difficulty',document.getElementById('difficulty').value)
 	form.append('maxGroupSize',document.getElementById('max-group-size').value)
 	form.append('price',document.getElementById('price').value)
@@ -149,7 +141,6 @@ if (userPasswordForm) userPasswordForm.addEventListener('submit', async e =>{
     document.getElementById('password').value = ''
     document.getElementById('password-confirm').value = ''
 })
-
 
 if(bookBtn){
     bookBtn.addEventListener('click', e => {
@@ -213,3 +204,60 @@ if(carousel)
 		}
 	  });
 });
+
+// FOR DELETE USER
+if(deleteUser){
+	deleteUser.forEach(item => {
+		item.addEventListener('click', function(e){
+			e.preventDefault();
+			var question = prompt('You are about to delete a Users account, write yes to Go Ahead');
+			var quest = question.toLowerCase();
+
+			if(quest === 'yes'){
+				var userId = item.getAttribute('title');
+				deleteClient(userId)
+			}else{
+				alert('wrong input')
+			}
+		})
+	})
+} 
+
+// FOR DELETE SELF
+if(deleteSelf){
+	deleteSelf.forEach(item => {
+		item.addEventListener('click', function(e){
+			e.preventDefault();
+			var question = prompt('You are about to delete Your account, write yes to Go Ahead');
+			var quest = question.toLowerCase();
+
+			if(quest === 'yes'){
+				deactivateSelf()
+			}else{
+				alert('wrong input')
+			}
+		})
+	})
+}
+
+// FOR DELETE TOUR
+if(deleteTour){
+	var deleteButton = document.querySelectorAll('.delete');
+	
+	for(let x in deleteButton){
+		deleteButton[x].addEventListener('click', (e)=>{
+			e.preventDefault();
+			var question = prompt('You are about to delete this tour, write yes to go ahead');
+
+			var quest = question.toLowerCase();
+
+			if(quest === 'yes'){
+				var tourId = document.getElementById('id').getAttribute('title');
+				deleteEvent(tourId);
+			}else{
+				alert('Wrong input');
+			}
+		})
+	}
+
+} 

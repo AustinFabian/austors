@@ -14,7 +14,7 @@ head
   .containment
     .hidden.responsive
       .userslide
-        a(href='')
+        a(href='', style='text-decoration:underline;')
           i.fa.fa-cogs(style='font-size: 22px; margin-right: 10px;')
           | SETTINGS
         a(href='/my-tours')
@@ -23,10 +23,7 @@ head
         a(href='')
           i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
           | MY REVIEWS
-        a(href='')
-          i.fa.fa-credit-card(style='font-size: 22px; margin-right: 10px;')
-          | BILLINGS
-        a(href='')
+        a.removeAccount
           i.fa.fa-trash(style='font-size: 22px; margin-right: 10px;')
           | DELETE ACCOUNT
         a(style='font-size: 20px;', href='/') ALL TOURS
@@ -37,7 +34,7 @@ head
           a(href='/tourManager')
             i.fa.fa-map(style='font-size: 22px; margin-right: 10px;')
             | MANAGE TOURS
-          a(href='userManager.html')
+          a(href='/userManager')
             i.fa.fa-user(style='font-size: 22px; margin-right: 10px;')
             | MANAGE USERS
           a(href='')
@@ -54,7 +51,7 @@ head
     // section user page
     .user
       .user1
-        a(href='')
+        a(href='', style='text-decoration:underline;')
           i.fa.fa-cogs(style='font-size: 22px; margin-right: 10px;')
           | SETTINGS
         a(href='/my-tours')
@@ -63,10 +60,7 @@ head
         a(href='')
           i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
           | MY REVIEWS
-        a(href='')
-          i.fa.fa-credit-card(style='font-size: 22px; margin-right: 10px;')
-          | BILLINGS
-        a(href='')
+        a.removeAccount
           i.fa.fa-trash(style='font-size: 22px; margin-right: 10px;')
           | DELETE ACCOUNT
         -if (user.role === "admin")

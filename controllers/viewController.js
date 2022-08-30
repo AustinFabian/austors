@@ -6,7 +6,7 @@ const User = require('./../model/userModel')
 
 
 exports.getOverview = catchAsync(async(req,res,next)=>{
-    const tours = await Tour.find()
+    const tours = await Tour.find();
     res.status(200).render('overview', {
         title: 'Austours | All Tours',
         tours
@@ -75,10 +75,10 @@ exports.getUser = catchAsync(async(req,res,next)=>{
 });
 
 exports.getUserManager = catchAsync(async(req,res,next)=>{
-
+    const users = await User.find()
     res.status(200).render('userManager',{
         title: 'Manage Users',
-        user: User
+        users
     })
 
 });

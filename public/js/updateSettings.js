@@ -23,7 +23,7 @@ export const updateSettings = async (data,type) => {
   };
 
   // CREATING TOUR ENGINE
-  export const createTour = async (data) => {
+  export const newTour = async (data) => {
 
     const url = `/api/v1/tours`;
 
@@ -35,7 +35,7 @@ export const updateSettings = async (data,type) => {
       });
       
       if(res.data.status === 'success'){
-          location.reload(true) 
+          location.assign('/') 
       }
     } catch (err) {
       console.log('error',err.response.data.message);
@@ -56,6 +56,64 @@ export const updateSettings = async (data,type) => {
       
       if(res.data.status === 'success'){
           location.reload(true) 
+      }
+    } catch (err) {
+      console.log('error',err.response.data.message);
+    }
+  };
+
+
+  // DELETING TOUR ENGINE
+  export const deleteEvent = async (tourId) => {
+
+    const url = `/api/v1/tours/${tourId}`;
+
+    try {
+      const res = await axios({
+        method: 'DELETE',
+        url
+      });
+      
+      if(res.data.status === 'success'){
+          location.reload(true) 
+      }
+    } catch (err) {
+      console.log('error',err.response.data.message);
+    }
+  };
+
+  // DELETE USER ENGINE
+  export const deleteClient = async (userId) => {
+
+    const url = `/api/v1/users/${userId}`;
+
+    try {
+      const res = await axios({
+        method: 'DELETE',
+        url
+      });
+      
+      if(res.data.status === 'success'){
+          location.reload(true) 
+      }
+    } catch (err) {
+      console.log('error',err.response.data.message);
+    }
+  };
+
+  // DELETE USER ENGINE
+  export const deactivateSelf = async () => {
+
+    const url = `/api/v1/users/deleteme`;
+
+    try {
+      const res = await axios({
+        method: 'DELETE',
+        url
+      });
+      
+      if(res.status === 204){
+          location.assign('/') 
       }
     } catch (err) {
       console.log('error',err.response.data.message);

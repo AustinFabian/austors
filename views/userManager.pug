@@ -6,19 +6,19 @@ head
   link(rel='stylesheet', href='css/styles.css')
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-  link(rel='icon', href='')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
   title Austours | Login to your account
 .container
   // section header
   .header
     .headerdiv1
-      a(href='overview.html') All tours
+      a(href='/') All tours
     .headerdiv2
-      img.img1(src='img/Austin FX LOGO.png', alt='')
+      img.img1(src='/img/Austin FX LOGO.png', alt='')
     .headerdiv3
-      a.button.but1(href='signup.html')
+      a.button.but1(href='/signup')
         | Signup
-      a.button.but2(href='#')
+      a.button.but2(href='/login')
         | Login
     #bars.bar
       i.fa.fa-bars(style='color: white;')
@@ -26,11 +26,11 @@ head
     .hidden
       ul.ul1
         li
-          a(href='index.html') All tours
+          a(href='/') All tours
         li
-          a(href='signup.html') Signup
+          a(href='/signup') Signup
         li
-          a(href='#') Login
+          a(href='/login') Login
       ul.ul2
         li(style='padding-right: 10px;')
           a(href='#') About us
@@ -38,53 +38,14 @@ head
           a(href='#') Contact
     // Users
     .tourist
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
-      .users
-        .usersa
-          div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-            img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src='img/Austin FX LOGO.png', alt='')
-          span.span9 Austin Fabian
-        a.usersb(href='') Remove User
+      each user in users 
+        .users
+          .usersa
+            div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
+              img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src=`/img/users/${user.photo}`, alt='')
+            span.span9=user.name.split(' ')[0]
+            br
+            span.span11=user.role
+          burron.usersb(title=`${user.id}`) Remove User
     // section footer
     include _footer

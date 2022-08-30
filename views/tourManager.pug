@@ -33,7 +33,7 @@ head
         li
           a(href='#') Contact
     // tour management cards
-    .overview
+    .overview#deleteTour
       each tour in tours 
         .card
           .cardimg(style=`background-image: url(img/tours/${tour.imageCover});`)
@@ -42,8 +42,8 @@ head
                 p.p4=tour.name
           .card3
             .card3a
-              a(href='tour.html')
-                span.edit Delete Tour
+                span.delete Delete Tour
+                span#id(title=`${tour.id}`)
             .card3a
               a.but3.edittour(href=`/updatetour/${tour.slug}`)
                 span.edit Edit tour

@@ -15,41 +15,45 @@ head
   .containment
     include _hidden
     // tour cards
-    .overview
-      each tour in tours 
-        .card
-          .cardimg(style=`background-image: url(img/tours/${tour.imageCover});`)
-            .card1
-              .divdiv
-                p.p4=tour.name
-          .card2
-            p.p5= `${tour.difficulty} ${tour.duration}-day tour`
-            p.p6= `${tour.summary}`
-            ul.ul
-              li.li
-                i.fa.fa-map-marker(style='font-size: 20px;')
-                span=tour.startLocation.description 
-              li.li
-                i.fa.fa-calendar-o(style='font-size: 20px;')
-                =tour.startDates[0].toLocaleString('en-us', {month: 'long', year : 'numeric'})
-              li.li
-                i.fa.fa-flag-o(style='font-size: 20px;')
-                = `${tour.locations.length} stops`
-              li.li
-                i.fa.fa-user(style='font-size: 20px;')
-                span=`${tour.maxGroupSize} people`
-          .card3
-            .card3a
-              ul.ul3
-                li.li2
-                  span.span1= `$${tour.price} `
-                  |  Per Person
-                li.li2
-                  span.span1= `${tour.ratingsAverage} `
-                  span= `Rating (${tour.ratingsQuantity})`
-            .card3a
-              a.but3(href=`/tour/${tour.slug}`)
-                | Details
+    - if(tours.length > 0)
+        .overview
+          each tour in tours 
+            .card
+              .cardimg(style=`background-image: url(img/tours/${tour.imageCover});`)
+                .card1
+                  .divdiv
+                    p.p4=tour.name
+              .card2
+                p.p5= `${tour.difficulty} ${tour.duration}-day tour`
+                p.p6= `${tour.summary}`
+                ul.ul
+                  li.li
+                    i.fa.fa-map-marker(style='font-size: 20px;')
+                    span=tour.startLocation.description 
+                  li.li
+                    i.fa.fa-calendar-o(style='font-size: 20px;')
+                    =tour.startDates[0].toLocaleString('en-us', {month: 'long', year : 'numeric'})
+                  li.li
+                    i.fa.fa-flag-o(style='font-size: 20px;')
+                    = `${tour.locations.coordinates.length / 2} stops`
+                  li.li
+                    i.fa.fa-user(style='font-size: 20px;')
+                    span=`${tour.maxGroupSize} people`
+              .card3
+                .card3a
+                  ul.ul3
+                    li.li2
+                      span.span1= `$${tour.price} `
+                      |  Per Person
+                    li.li2
+                      span.span1= `${tour.ratingsAverage} `
+                      span= `Rating (${tour.ratingsQuantity})`
+                .card3a
+                  a.but3(href=`/tour/${tour.slug}`)
+                    | Details
+    - if(tours.length === 0)
+      .overview2 
+        p.noTour No Tours Yet Visit Later 
       
     // section footer
     include _footer

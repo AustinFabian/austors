@@ -32,6 +32,8 @@ exports.uploadTourImages = upload.fields([
 
 // code to resize the image files using multer
 exports.resizeTourImages = catchAsync(async (req,res,next)=>{
+
+  console.log(req.body)
   
   if(!req.files.imageCover || !req.files.images) return next();
 
@@ -62,6 +64,8 @@ exports.resizeTourImages = catchAsync(async (req,res,next)=>{
       req.body.images.push(filename)
     })
   );
+
+  
 
   next();
 });
