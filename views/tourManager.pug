@@ -42,8 +42,7 @@ head
                 p.p4=tour.name
           .card3
             .card3a
-                span.delete Delete Tour
-                span#id(title=`${tour.id}`)
+                span.delete(title=`${tour.id}`) Delete Tour
             .card3a
               a.but3.edittour(href=`/updatetour/${tour.slug}`)
                 span.edit Edit tour

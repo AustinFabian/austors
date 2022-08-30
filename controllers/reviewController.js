@@ -1,4 +1,4 @@
-const Review = require('./../model/reviewmodel');
+const Review = require('./../model/reviewModel');
 const catchAsync = require('./../utils/catchAsync');
 // requiring our custom handler factory function
 const handler = require('./handlerFactory');

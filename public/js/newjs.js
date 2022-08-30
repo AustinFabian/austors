@@ -244,20 +244,20 @@ if(deleteSelf){
 if(deleteTour){
 	var deleteButton = document.querySelectorAll('.delete');
 	
-	for(let x in deleteButton){
-		deleteButton[x].addEventListener('click', (e)=>{
+	deleteButton.forEach(item=>{
+		item.addEventListener('click', (e)=>{
 			e.preventDefault();
 			var question = prompt('You are about to delete this tour, write yes to go ahead');
 
 			var quest = question.toLowerCase();
 
 			if(quest === 'yes'){
-				var tourId = document.getElementById('id').getAttribute('title');
+				var tourId = item.getAttribute('title');
 				deleteEvent(tourId);
 			}else{
 				alert('Wrong input');
 			}
 		})
-	}
+	})
 
 } 
