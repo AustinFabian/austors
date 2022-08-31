@@ -38,14 +38,14 @@ head
           a(href='#') Contact
     // Users
     .tourist
-      each user in users 
+      each review in reviews 
         .users
           .usersa
             div(style='display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 12px solid rgba(255, 255, 255,.3)')
-              img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src=`/img/users/${user.photo}`, alt='')
-            span.span9=user.name.split(' ')[0]
+              img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgb(255, 255, 255);', src=`/img/users/${review.user.photo}`, alt='')
+            span.span9=review.user.name.split(' ')[0].toUpperCase()
             br
-            span.span11=user.role
-          burron.usersb(title=`${user.id}`) Remove User
+          p.reviewp=review.review
+          burron.reviewsb(title=`${review.id}`) Remove Review 
     // section footer
     include _footer

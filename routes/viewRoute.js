@@ -13,5 +13,6 @@ router.get('/usermanager',authController.isLoggedIn, viewController.getUserManag
 router.get('/createtour', viewController.createTour);
 router.get('/updatetour/:slug', viewController.updateTour);
 router.get('/my-tours',authController.protect,viewController.getMyTours)
+router.get('/reviewmanager',authController.isLoggedIn, viewController.getreviewManager);
 
 module.exports = router

@@ -120,3 +120,42 @@ export const updateSettings = async (data,type) => {
     }
   };
 
+  // TOUR REVIEW ENGINE
+  export const dropAReview = async (review,tour) => {
+
+    const url = `/api/v1/reviews/${tour}`;
+
+    try {
+      const res = await axios({
+        method: 'POST',
+        url,
+        data:{
+          review,
+          status: 201
+        }
+      });
+        location.reload();
+    } catch (err) {
+      console.log('error',err.response.data.message);
+    }
+  };
+
+  // DELETE USER REVIEW ENGINE
+
+  export const deleteUserReview = async (reviewId) => {
+
+    const url = `api/v1/reviews/${reviewId}`;
+
+    try {
+      const res = await axios({
+        method: 'DELETE',
+        url
+      });
+      
+      if(res.data.status === 'success'){
+          location.reload(true) 
+      }
+    } catch (err) {
+      console.log('error',err.response.data.message);
+    }
+  };

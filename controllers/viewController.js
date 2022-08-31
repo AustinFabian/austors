@@ -3,6 +3,8 @@ const Bookings = require('./../model/bookingsModel')
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/AppError')
 const User = require('./../model/userModel')
+const Review = require('./../model/reviewModel')
+
 
 
 exports.getOverview = catchAsync(async(req,res,next)=>{
@@ -77,7 +79,7 @@ exports.getUser = catchAsync(async(req,res,next)=>{
 exports.getUserManager = catchAsync(async(req,res,next)=>{
     const users = await User.find()
     res.status(200).render('userManager',{
-        title: 'Manage Users',
+        title: 'Austours Admin | Manage Users',
         users
     })
 
@@ -96,7 +98,13 @@ exports.getMyTours = catchAsync(async(req,res,next)=>{
     })
 })
 
-
+exports.getreviewManager = catchAsync(async(req,res,next)=>{
+    const reviews = await Review.find()
+    res.status(200).render('reviewManager', {
+        title: 'Austours Admin | Review Manager',
+        reviews
+    })
+});
 
 exports.updateUserData = catchAsync(async(req,res,next)=>{
     const updatedUser = await User.findByIdAndUpdate(req.user.id, {

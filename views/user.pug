@@ -20,9 +20,10 @@ head
         a(href='/my-tours')
           i.fa.fa-suitcase(style='font-size: 22px; margin-right: 10px;')
           | MY BOOKINGS
-        a(href='')
-          i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
-          | MY REVIEWS
+        -if(user.role === "user")
+          a(href='')
+            i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
+            | MY REVIEWS
         a.removeAccount
           i.fa.fa-trash(style='font-size: 22px; margin-right: 10px;')
           | DELETE ACCOUNT
@@ -37,7 +38,7 @@ head
           a(href='/userManager')
             i.fa.fa-user(style='font-size: 22px; margin-right: 10px;')
             | MANAGE USERS
-          a(href='')
+          a(href='/reviewmanager')
             i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
             | MANAGE REVIEWS
           a(href='')
@@ -57,9 +58,10 @@ head
         a(href='/my-tours')
           i.fa.fa-suitcase(style='font-size: 22px; margin-right: 10px;')
           | MY BOOKINGS
-        a(href='')
-          i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
-          | MY REVIEWS
+        -if(user.role === "user")
+          a(href='')
+            i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
+            | MY REVIEWS
         a.removeAccount
           i.fa.fa-trash(style='font-size: 22px; margin-right: 10px;')
           | DELETE ACCOUNT
@@ -72,7 +74,7 @@ head
           a(href='/userManager')
             i.fa.fa-user(style='font-size: 22px; margin-right: 10px;')
             | MANAGE USERS
-          a(href='')
+          a(href='/reviewmanager')
             i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
             | MANAGE REVIEWS
           a(href='')

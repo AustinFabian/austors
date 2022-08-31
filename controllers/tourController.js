@@ -32,13 +32,10 @@ exports.uploadTourImages = upload.fields([
 
 // code to resize the image files using multer
 exports.resizeTourImages = catchAsync(async (req,res,next)=>{
-
-  console.log(req.body)
   
   if(!req.files.imageCover || !req.files.images) return next();
 
-
-  req.body.imageCover = `tour-${req.params.id}-${Date.now()}-cover.jpeg`;
+  req.body.imageCover = `tour-coverImage-${Date.now()}-cover.jpeg`;
 
   // FOR IMAGES
   await sharp(req.files.imageCover[0].buffer)
@@ -53,10 +50,10 @@ exports.resizeTourImages = catchAsync(async (req,res,next)=>{
 
   await Promise.all
     (req.files.images.map(async (file, i)=>{
-      const filename =  `tour-${req.params.id}-${Date.now()}-${i + 1}.jpeg`
+      console.log(i)
+      const filename =  `tour-images-${Date.now()}-${i + 1}.jpeg`
       
       await sharp(file.buffer)
-      .resize(2000,1333)
       .toFormat('jpeg')
       .jpeg({quality: 90})
       .toFile(`public/img/tours/${filename}`)

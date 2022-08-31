@@ -12,7 +12,7 @@ router.use(authController.protect)
 
 // ROUTE TO GET ALL, AND POST REVIEW
 router
-.route('/')
+.route('/:tourId')
 .get(reviewController.getReviews)
 .post(authController.restrictTo('user')
 ,reviewController.setTourUserIds

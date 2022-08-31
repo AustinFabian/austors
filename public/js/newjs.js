@@ -7,6 +7,8 @@ import {newTour} from './updateSettings'
 import {deleteEvent} from './updateSettings'
 import {deleteClient} from './updateSettings'
 import {deactivateSelf} from './updateSettings'
+import {dropAReview} from './updateSettings'
+import {deleteUserReview} from './updateSettings'
 import {bookTour} from './stripe'
 import {showAlert} from './alert'
 import { signup } from './signup'
@@ -21,8 +23,10 @@ const tourUpdateForm = document.querySelector('.form-tour-update');
 const createTourForm = document.querySelector('.form-create-tour');
 const deleteTour = document.getElementById('deleteTour');
 const deleteUser = document.querySelectorAll('.usersb');
+const deleteReview = document.querySelectorAll('.reviewsb');
 const deleteSelf = document.querySelectorAll('.removeAccount');
 const userPasswordForm = document.querySelector('.form-user-password');
+const reviewForm = document.getElementById('formReview');
 const bookBtn = document.getElementById('book-tour');
 const carousel = document.querySelector('.carousel');
 
@@ -59,6 +63,17 @@ if (userDataForm) userDataForm.addEventListener('submit', function(e){
     updateSettings(form, 'data')
 })
 
+// FOR REVIEW
+
+if(reviewForm) reviewForm.addEventListener('submit', e =>{
+	e.preventDefault();
+
+    const review = document.getElementById('userReview').value
+	const tour = document.getElementById('getTourId').getAttribute('title');
+
+	dropAReview(review,tour)
+})
+
 // FOR CREATING NEW TOUR
 if (createTourForm) createTourForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -92,7 +107,7 @@ if (createTourForm) createTourForm.addEventListener('submit', function(e){
 	form.append('description',document.getElementById('description').value)
 	form.append('summary',document.getElementById('summary').value)
 	
-    newTour(form)
+     newTour(form)
 })
 
 // FOR UPDATING TOUR
@@ -122,10 +137,11 @@ if (tourUpdateForm) tourUpdateForm.addEventListener('submit', function(e){
 
 	const Id = document.getElementById('id').getAttribute('title');
 	
-    updateTour(form, Id)
+     updateTour(form, Id)
 })
 
-if (userPasswordForm) userPasswordForm.addEventListener('submit', async e =>{
+// FOR UPDATE PASSWORD
+if (userPasswordForm) userPasswordForm.addEventListener('submit', e =>{
 
     e.preventDefault();
 
@@ -133,7 +149,7 @@ if (userPasswordForm) userPasswordForm.addEventListener('submit', async e =>{
     const passwordCurrent = document.getElementById('password-current').value;
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('password-confirm').value;
-    await updateSettings({passwordCurrent,password,passwordConfirm},'password')
+     updateSettings({passwordCurrent,password,passwordConfirm},'password')
 
     document.querySelector('.button--save-password').innerHTML = 'Save Password'
 
@@ -142,6 +158,7 @@ if (userPasswordForm) userPasswordForm.addEventListener('submit', async e =>{
     document.getElementById('password-confirm').value = ''
 })
 
+// FOR BOOKING
 if(bookBtn){
     bookBtn.addEventListener('click', e => {
         e.target.textContent = 'processing...'
@@ -260,4 +277,23 @@ if(deleteTour){
 		})
 	})
 
+} 
+
+// delete review
+
+if(deleteReview){
+	deleteReview.forEach(item => {
+		item.addEventListener('click', function(e){
+			e.preventDefault();
+			var question = prompt('You are about to delete a Users review, write yes to Go Ahead');
+			var quest = question.toLowerCase();
+
+			if(quest === 'yes'){
+				var reviewId = item.getAttribute('title');
+				deleteUserReview(reviewId)
+			}else{
+				alert('wrong input')
+			}
+		})
+	})
 } 

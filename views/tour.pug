@@ -29,6 +29,7 @@ head
           li
             i.fa.fa-map-marker(style='font-size: 22px;')
             span=`${tour.startLocation.description}`
+            span#getTourId(title=`${tour.id}`)
     // section tour detail2
     .detail2
       .t2
@@ -80,7 +81,7 @@ head
       .carousel.owl-carousel
         each img, i in tour.images
           .card
-            .box(style=`background-image: url(/img/tours/${img});`)
+            .box1(style=`background-image: url(/img/tours/${img});`)
     // Section map
     .mapb
       #map(data-locations=`${JSON.stringify(tour.locations)}`)
@@ -90,13 +91,13 @@ head
         // Drop a review part
         - if(tour.reviews.length > 0)
             .card
-              .box.reviews
+              .box2.reviews
                 p.p10
                   img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgba(56, 143, 211, .5);', src='/img/Austin FX LOGO.png', alt='')
                   span.span9 @Austours
                 br
                 p.p11
-                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci architecto eos reprehenderit dolorem
+                  | The best tour to embark on if you dare get bored, check em out, we've got places all around the world all for you to have a happy time with friends, give Yourself a treat, Give yourself Austours
                 br
                 p
                   button#tourReview.but3
@@ -105,11 +106,10 @@ head
               .card
                 .box
                   p.p10
-                    img.photo3(style='width: 50px;', src='/img/users/user-62ca75bcc0b1bb2ef89f88ce-1658480698233.jpeg', alt='')
-                    span.span9 Austin Fabian
+                    img.photo3(style='width: 50px;', src=`/img/users/${review.user.photo}`, alt='')
+                    span.span9= review.user.name
                   br
-                  p.p11
-                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci architecto eos reprehenderit dolorem qui natus sunt, et recusandae! Natus error quod sunt excepturi maxime officia cum vero. Laborum, dolores?
+                  p.p11=review.review
         - if(tour.reviews.length === 0)
             .card
                 .box(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
@@ -135,25 +135,30 @@ head
             
             
                     
-      form#formReview.reviewForm(action='')
+      form#formReview.reviewForm
         p.p32
           label(for='review')
-            input.reviewInput(type='text', placeholder='Drop your review here')
+          input.reviewInput#userReview(type='text', placeholder='Drop your review here')
+          button.invincible
             i.fa.fa-paper-plane
     // section  detail4
     .detail4
       .detail4a
         .cta__img.cta__img--logo
-          img.photo5(src=`/img/tours/${tour.images[1]}`, alt='Austours logo')
-        img.cta__img.cta__img--1.photo6(src=`/img/tours/${tour.images[0]}`, alt='')
-        img.cta__img.cta__img--2.photo6(src=`/img/tours/${tour.images[2]}`, alt='')
+          img.photo5(style=`background-image:url(/img/tours/${tour.images[1]}); background-size:cover;background-position:center;`)
+        img.cta__img.cta__img--1.photo6(style=`background-image:url(/img/tours/${tour.images[0]}); background-size:cover;background-position:center;`)
+        img.cta__img.cta__img--2.photo6(style=`background-image:url(/img/tours/${tour.images[2]});background-size:cover;background-position:center;`)
       .detail4b
         p
         p.p8 WHAT ARE YOU WAITING FOR?
         span= `${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`
         p
         p(style='margin-top: 30px;')
-          button.but3#book-tour(data-tour-id=`${tour.id}`)
-            | Book Tour Now
+          if user
+            button.but3#book-tour(data-tour-id=`${tour.id}`)
+              | Book Tour Now
+          else 
+            a.but3(href='/login')
+              | Login to Book a Tour
     // section footer
     include _footer

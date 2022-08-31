@@ -11,6 +11,7 @@
               span.fancy2
                 img.photo(style='border: 5px solid rgba(255, 255, 255, .7)', src=`/img/users/${user.photo}`, alt='')
               span(style='margin-left: 5px;')= user.name.split(' ')[0]
+              span#getUserId(title=`${user.id}`)
         else 
           li
             a(href='/overview') All tours
