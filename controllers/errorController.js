@@ -38,7 +38,7 @@ const sendErrorProd = (err,req,res)=>{
             // Programming or other unknown error: dont't leak error details
             // log Error
             console.log('Error :' + err)
-            // Swend generic message
+            // Send generic message
             return res.status(500).json({
                 status: 'Error',
                 message: 'Somethimg went wrong!',

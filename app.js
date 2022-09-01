@@ -83,13 +83,13 @@ app.use('/api/v1/users',userRoute);
 app.use('/api/v1/bookings',bookingsRoute)
 app.use('/api/v1/reviews',reviewRoute);
 
-// let count = 0;
-// app.get('/home',function(req,res){
+let count = 0;
+app.get('/home',function(req,res){
 
-//     count++
+    count++
     
-//     res.send(`<h1> ${count} counts <h1>`)
-// })
+    res.send(`<h1> ${count} counts <h1>`)
+})
 
 // FOR UNKNOWN URL ROUTE
 app.all('*',(req,res,next)=>{
