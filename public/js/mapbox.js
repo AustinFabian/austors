@@ -4,8 +4,10 @@ const mapbox = document.getElementById('map')
 
 if(mapbox){
 
-  const location = JSON.parse(mapbox.dataset.locations);
-  console.log(location)
+  var body = document.querySelector('body');
+
+  body.onload = function(){
+    const location = JSON.parse(mapbox.dataset.locations);
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiYXVzdGluZmFiaWFuIiwiYSI6ImNsNTN4Mjl1MDB0amQzZXJ4cmoxbTU1aXAifQ.2CyD3OaN_rJoaE7MEZ9z3Q';
 const map = new mapboxgl.Map({
@@ -36,6 +38,9 @@ const bounds = new mapboxgl.LngLatBounds();
       .setLngLat(location.coordinates)
       .setHTML(`<h2 class='location'>${location.description}</h2>`)
       .addTo(map);
+  }
+
+  
  }
 
   

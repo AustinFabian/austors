@@ -104,6 +104,9 @@ if (createTourForm) createTourForm.addEventListener('submit', function(e){
 	form.append('images',document.getElementById('photo1').files[0])
 	form.append('images',document.getElementById('photo2').files[0])
 	form.append('images',document.getElementById('photo3').files[0])
+	form.append('images',document.getElementById('photo4').files[0])
+	form.append('images',document.getElementById('photo5').files[0])
+	form.append('images',document.getElementById('photo6').files[0])
 	form.append('description',document.getElementById('description').value)
 	form.append('summary',document.getElementById('summary').value)
 	

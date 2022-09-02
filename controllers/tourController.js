@@ -26,7 +26,7 @@ exports.uploadTourImages = upload.fields([
   },
   {
     name: 'images',
-    maxCount: 3
+    maxCount: 6
   }
 ]);
 

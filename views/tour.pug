@@ -70,12 +70,7 @@ head
         div
           p.p8
             span(style='text-transform: uppercase;')=`ABOUT THE ${tour.name} TOUR`
-          p.p9
-            - const paragraph = tour.description.split('\n')
-            span=paragraph[0]
-            br
-            br
-            span=paragraph[1]
+          p.p9= tour.description 
     // section detail3
     .detail3
       .carousel.owl-carousel
