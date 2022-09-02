@@ -485,6 +485,18 @@
   color: transparent;
 }
 
+/* for map box */
+
+.location{
+  background-image: linear-gradient(to right, #ff3d6b,  #388fd3 , #ff3d6b);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.mapboxgl-popup-content{
+  min-width: 240px;
+}
+
 /* tour details page styling starts here */
 .detail1{
   background-position: center;
@@ -634,9 +646,6 @@
 .box2{
   min-height: inherit;
   width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .owl-dots{

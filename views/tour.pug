@@ -84,14 +84,14 @@ head
             .box1(style=`background-image: url(/img/tours/${img});`)
     // Section map
     .mapb
-      #map(data-locations=`${JSON.stringify(tour.locations)}`)
+      #map(data-locations=`${JSON.stringify(tour.startLocation)}`)
     // section reviews
     .review
       .carousel.owl-carousel
         // Drop a review part
         - if(tour.reviews.length > 0)
             .card
-              .box2.reviews
+              .box.reviews
                 p.p10
                   img(style='width: 50px; height: 50px; border-radius: 50%; border: 5px solid rgba(56, 143, 211, .5);', src='/img/Austin FX LOGO.png', alt='')
                   span.span9 @Austours
@@ -112,7 +112,7 @@ head
                   p.p11=review.review
         - if(tour.reviews.length === 0)
             .card
-                .box(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
+                .box2(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
                   p.p10(style='font-size:22px;')
                     | DROP A REVIEW 
                     i.fa.fa-arrow-right(style='font-size: 60px; color:#388fd3')
@@ -123,13 +123,13 @@ head
                   span.span9 @Austours
                 br
                 p.p11
-                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci architecto eos reprehenderit dolorem
+                  | The best tour to embark on if you dare get bored, check em out, we've got places all around the world all for you to have a happy time with friends, give Yourself a treat, Give yourself Austours
                 br
                 p
                   button#tourReview.but3
                     | Drop a Review
             .card
-                .box(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
+                .box2(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
                   p.p11
                     | No reviews on this tour Yet
             
