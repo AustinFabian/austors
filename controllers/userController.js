@@ -111,4 +111,4 @@ exports.getUser = handler.getOne(User);
 exports.updateUser = handler.updateOne(User); // Do not update password with this
 
 // Delete user
-exports.deleteUser = handler.deleteOne(User);
+exports.deleteUser = handler.deleteOne(User, "user");

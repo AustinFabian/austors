@@ -4,20 +4,35 @@ const AppError = require('./../utils/AppError');
 
 const APIFeatures = require('./../utils/APIfeatures');
 
+const Review = require('../model/reviewModel');
+
 
 
 // FOR DELETING OF ANY SORT
-exports.deleteOne = Model => catchAsync(async(req,res,next)=>{
-    const doc = await Model.findByIdAndDelete(req.params.id);
+exports.deleteOne = (Model, type) => catchAsync(async(req,res,next)=>{
 
-    if(!doc){
-        return next(new AppError(`No document found with that ID`,404))
-    }
+  var doc
+  
+  if(type === 'user'){
+    doc = await Model.findByIdAndDelete(req.params.id);
+    await Review.deleteMany({"user": req.params.id});
+  }else if(type === 'tour'){
+    doc = await Model.findByIdAndDelete(req.params.id);
+    await Review.deleteMany({"tour": req.params.id});
+  }else{
+    doc = await Model.findByIdAndDelete(req.params.id);
+  }
 
-    res.status(200).json({
-        status: 'success',
-        data: null
-    });
+    
+
+  if(!doc){
+    return next(new AppError(`No document found with that ID`,404))
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: null
+  });
 });
 
 // FOR UPDATING OF ANY SORT

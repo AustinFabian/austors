@@ -87,7 +87,7 @@ exports.createTour = handler.createOne(Tour);
 exports.updateTour = handler.updateOne(Tour);
 
 // Delete tour function
-exports.deleteTour = handler.deleteOne(Tour);
+exports.deleteTour = handler.deleteOne(Tour, "tour");
 
 // AGGREGATION FUNCTION
 exports.getTourStats = catchAsync(async (req,res,next)=>{

@@ -36,7 +36,7 @@ const bounds = new mapboxgl.LngLatBounds();
       offset: 0
     })
       .setLngLat(location.coordinates)
-      .setHTML(`<h2 class='location'>${location.description}</h2>`)
+      .setHTML(`<p class='location'>${location.description}</p>`)
       .addTo(map);
   }
 
