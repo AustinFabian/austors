@@ -288,6 +288,23 @@
   transition: all .5s ease;
 }
 
+.but33{
+  text-decoration: none;
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  background:#101540;
+  color: white;
+  transition: all .5s ease;
+}
+
+.but33:hover{
+  background-image: linear-gradient(to right, #388fd3 , #ff3d6b);
+}
+
 .but3a{
   text-decoration: none;
   padding: 10px 25px;
@@ -488,14 +505,11 @@
 /* for map box */
 
 .location{
+  font-size: 18px;
   text-align: center;
   background-image: linear-gradient(to right, #ff3d6b,  #388fd3 , #ff3d6b);
   -webkit-background-clip: text;
   color: transparent;
-}
-
-.mapboxgl-popup-content{
-  min-width: 240px;
 }
 
 /* tour details page styling starts here */
@@ -1102,7 +1116,30 @@
   border-radius: 10px 0 10px 0;
 }
 
+.errorMsg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 50px;
+  z-index: 999;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.disError{
+  background: red;
+}
+
+.errorMsg span{
+  min-height: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 15px;
+  color: white;
+}
 
 
 /* Media query begins here */
@@ -1284,6 +1321,11 @@
 
   .tourist{
     padding: 80px 5px ;
+  }
+
+  .but33{
+    padding: 5px 15px;
+    font-size: 14px;
   }
   
 }

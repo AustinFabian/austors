@@ -8484,7 +8484,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// type is either 'password' or 'data'
+var forError = document.getElementById('spanErrors');
+
+var hideAlert = function hideAlert() {
+  forError.classList.remove("disError");
+  forError.innerHTML = "";
+}; // type is either 'password' or 'data'
+
+
 var updateSettings = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data, type) {
     var url, res;
@@ -8787,15 +8794,22 @@ var dropAReview = /*#__PURE__*/function () {
           case 4:
             res = _context7.sent;
             location.reload();
-            _context7.next = 11;
+            _context7.next = 12;
             break;
 
           case 8:
             _context7.prev = 8;
             _context7.t0 = _context7["catch"](1);
             console.log('error', _context7.t0.response.data.message);
+            window.setTimeout(function () {
+              forError.classList.add('disError');
+              forError.innerHTML = _context7.t0.response.data.message;
+              window.setTimeout(function () {
+                hideAlert();
+              }, 7000);
+            });
 
-          case 11:
+          case 12:
           case "end":
             return _context7.stop();
         }
@@ -9559,7 +9573,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49557" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53100" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

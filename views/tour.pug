@@ -17,6 +17,8 @@ head
   // section header
   include _header
   .containment
+    .errorMsg#errors 
+      span#spanErrors 
     include _hidden
     // section tour detail1
     .detail1(style=`background-image: url(/img/tours/${tour.imageCover});`)
@@ -153,7 +155,7 @@ head
             button.but3#book-tour(data-tour-id=`${tour.id}`)
               | Book Tour Now
           else 
-            a.but3(href='/login')
+            a.but33(href='/login')
               | Login to Book a Tour
     // section footer
     include _footer

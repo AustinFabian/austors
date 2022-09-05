@@ -1,6 +1,12 @@
 import axios from 'axios'
 import {showAlert} from '/alert'
 
+var forError = document.getElementById('spanErrors')
+const hideAlert = function(){
+  forError.classList.remove("disError");
+  forError.innerHTML = "";
+}
+
 // type is either 'password' or 'data'
 export const updateSettings = async (data,type) => {
 
@@ -137,6 +143,13 @@ export const updateSettings = async (data,type) => {
         location.reload();
     } catch (err) {
       console.log('error',err.response.data.message);
+      window.setTimeout(()=>{
+        forError.classList.add('disError');
+        forError.innerHTML = err.response.data.message;
+        window.setTimeout(()=>{
+          hideAlert();
+        },7000)
+      })
     }
   };
 

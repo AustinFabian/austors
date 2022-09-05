@@ -12,7 +12,7 @@ if(mapbox){
   mapboxgl.accessToken = 'pk.eyJ1IjoiYXVzdGluZmFiaWFuIiwiYSI6ImNsNTN4Mjl1MDB0amQzZXJ4cmoxbTU1aXAifQ.2CyD3OaN_rJoaE7MEZ9z3Q';
 const map = new mapboxgl.Map({
 container: 'map', // container ID
-style: 'mapbox://styles/austinfabian/cl54dc0ot003x14nim2f3gpn0', // style URL
+style: 'mapbox://styles/austinfabian/cl7or9v4f005j14lkp0hwlxlr', // style URL
 center: location.coordinates, // starting position [lng, lat]
 scrollZoom:false,
 zoom: 10.4, // starting zoom
