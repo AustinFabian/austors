@@ -505,7 +505,7 @@
 /* for map box */
 
 .location{
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   background-image: linear-gradient(to right, #ff3d6b,  #388fd3 , #ff3d6b);
   -webkit-background-clip: text;
