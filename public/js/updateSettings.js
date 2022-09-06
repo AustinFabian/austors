@@ -143,13 +143,24 @@ export const updateSettings = async (data,type) => {
         location.reload();
     } catch (err) {
       console.log('error',err.response.data.message);
-      window.setTimeout(()=>{
-        forError.classList.add('disError');
-        forError.innerHTML = err.response.data.message;
+      if(err.response.data.message.includes("duplicate key")){
         window.setTimeout(()=>{
-          hideAlert();
-        },7000)
-      })
+          forError.classList.add('disError');
+          forError.innerHTML = "A user can drop a review only once";
+          window.setTimeout(()=>{
+            hideAlert();
+          },7000)
+        })
+      }else{
+        window.setTimeout(()=>{
+          forError.classList.add('disError');
+          forError.innerHTML = err.response.data.message;
+          window.setTimeout(()=>{
+            hideAlert();
+          },7000)
+        })
+      }
+      
     }
   };
 

@@ -8801,13 +8801,24 @@ var dropAReview = /*#__PURE__*/function () {
             _context7.prev = 8;
             _context7.t0 = _context7["catch"](1);
             console.log('error', _context7.t0.response.data.message);
-            window.setTimeout(function () {
-              forError.classList.add('disError');
-              forError.innerHTML = _context7.t0.response.data.message;
+
+            if (_context7.t0.response.data.message.includes("duplicate key")) {
               window.setTimeout(function () {
-                hideAlert();
-              }, 7000);
-            });
+                forError.classList.add('disError');
+                forError.innerHTML = "A user can drop a review only once";
+                window.setTimeout(function () {
+                  hideAlert();
+                }, 7000);
+              });
+            } else {
+              window.setTimeout(function () {
+                forError.classList.add('disError');
+                forError.innerHTML = _context7.t0.response.data.message;
+                window.setTimeout(function () {
+                  hideAlert();
+                }, 7000);
+              });
+            }
 
           case 12:
           case "end":
@@ -9573,7 +9584,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53100" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60809" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
